@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Viva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h2>Thermodynamics - 5</h2>
+        <form id="quizForm">
+            <div class="question"><input type="checkbox"> Chemical Energetics</div>
+            <div class="question"><input type="checkbox"> Chemical Thermodynamics</div>
+            <div class="question"><input type="checkbox"> System</div>
+            <div class="question"><input type="checkbox"> Surroundings</div>
+            <div class="question"><input type="checkbox"> Open system</div>
+            <div class="question"><input type="checkbox"> Closed system</div>
+            <div class="question"><input type="checkbox"> Isolated system</div>
+            <div class="question"><input type="checkbox"> Homogeneous and Heterogeneous</div>
+            <div class="question"><input type="checkbox"> Microscopic properties</div>
+            <div class="question"><input type="checkbox"> Extensive properties</div>
+            <div class="question"><input type="checkbox"> Intensive properties</div>
+            <div class="question"><input type="checkbox"> State function</div>
+            <div class="question"><input type="checkbox"> Path function</div>
+            <div class="question"><input type="checkbox"> Internal energy (U)</div>
+            <div class="question"><input type="checkbox"> First law of thermodynamics</div>
+            <div class="question"><input type="checkbox"> Sign conversion</div>
+            <div class="question"><input type="checkbox"> Irreversible process</div>
+            <div class="question"><input type="checkbox"> Reversible process</div>
+            <div class="question"><input type="checkbox"> Isothermal process</div>
+            <div class="question"><input type="checkbox"> Isobaric process</div>
+            <div class="question"><input type="checkbox"> Isochoric process</div>
+            <div class="question"><input type="checkbox"> Adiabatic process</div>
+            <div class="question"><input type="checkbox"> Cyclic process</div>
+            <div class="question"><input type="checkbox"> Enthalpy</div>
+            <div class="question"><input type="checkbox"> Enthalpy of reaction</div>
+            <div class="question"><input type="checkbox"> Standard reaction enthalpy</div>
+            <div class="question"><input type="checkbox"> Standard enthalpy of fusion</div>
+            <div class="question"><input type="checkbox"> Standard enthalpy of vaporization</div>
+            <div class="question"><input type="checkbox"> Standard enthalpy of sublimation</div>
+            <div class="question"><input type="checkbox"> Enthalpy of formation</div>
+            <div class="question"><input type="checkbox"> Relation between standard enthalpy of reaction and formation</div>
+            <div class="question"><input type="checkbox"> Standard enthalpy of atomization</div>
+            <div class="question"><input type="checkbox"> Bond dissociation enthalpy</div>
+            <div class="question"><input type="checkbox"> Hess’s Law</div>
+            <div class="question"><input type="checkbox"> Born-Haber cycle</div>
+            <button type="button" onclick="calculateScore()">Submit</button>
+        </form>
+        <div class="result" id="result"></div>
+        <button class="share" id="shareBtn" style="display:none;" onclick="shareToWhatsApp()">Share to WhatsApp</button>
+    </div>
+
+    <script>
+        function calculateScore() {
+            let total = document.querySelectorAll('input[type="checkbox"]').length;
+            let checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            let uncheckedItems = [];
+
+            document.querySelectorAll('input[type="checkbox"]').forEach((item) => {
+                if (!item.checked) {
+                    uncheckedItems.push(`- ${item.parentElement.textContent.trim()}`);
+                }
+            });
+
+            let resultText = `You attended ${checked} out of ${total}.<br><br>Not attended:<br>${uncheckedItems.length > 0 ? uncheckedItems.join('<br>') : 'None'}`;
+            document.getElementById("result").innerHTML = resultText;
+            
+            document.getElementById("shareBtn").style.display = "block";
+            document.getElementById("shareBtn").setAttribute("data-text", resultText.replace(/<br>/g, '\n'));
+        }
+        
+        function shareToWhatsApp() {
+            let text = document.getElementById("shareBtn").getAttribute("data-text");
+            let whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
