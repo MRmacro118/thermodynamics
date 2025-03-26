@@ -20,7 +20,7 @@ This is a simple, elegant, and fully responsive web-based Chemistry Viva checkli
 Simply open `index.html` in any browser, and it works instantly. No dependencies or backend required.
 
 ## Live Demo
-Check out the deployed version here: [Chemistry Viva Checklist](https://bit.ly/3R6F3Dp)
+Check out the deployed version here: [Chemistry Viva Checklist]([https://bit.ly/3R6F3Dp](https://chemtd.netlify.app/))
 
 ## Why This Project?
 I built this in just **30 minutes** to demonstrate how quickly you can create a functional web app using HTML, CSS, and JavaScript.
